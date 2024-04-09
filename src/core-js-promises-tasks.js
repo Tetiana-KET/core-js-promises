@@ -52,7 +52,8 @@ function getPromiseResult(source) {
 }
 
 /**
- * Takes an array of promises and returns a promise that resolves with the value of the first successfully resolved promise From the given array.
+ * Takes an array of promises and returns a promise that resolves with the value of the first successfully resolved promise
+ * From the given array.
  * If all promises in the array are rejected, it returns a promise that is rejected.
  *
  * @param {Array<Promise<number>>} promises
@@ -64,8 +65,8 @@ function getPromiseResult(source) {
  * [Promise.resolve(1), Promise.reject(2), Promise.resolve(3)]  => Promise fulfilled with 1
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
-function getFirstResolvedPromiseResult(/* promises */) {
-  throw new Error('Not implemented');
+function getFirstResolvedPromiseResult(promises) {
+  return Promise.any(promises);
 }
 
 /**
@@ -87,13 +88,15 @@ function getFirstResolvedPromiseResult(/* promises */) {
  * [promise3, promise6, promise2] => Promise rejected with 2
  * [promise3, promise4, promise6] => Promise rejected with 6
  */
-function getFirstPromiseResult(/* promises */) {
-  throw new Error('Not implemented');
+function getFirstPromiseResult(promises) {
+  return Promise.race(promises);
 }
 
 /**
- * Attempts to resolve all provided promises. If all promises resolve successfully, it returns a promise that resolves with an array of their values.
- * If any of the promises are rejected, it returns a promise that is immediately rejected with the reason of the first promise that was rejected.
+ * Attempts to resolve all provided promises. If all promises resolve successfully, it returns a promise that resolves with
+ * an array of their values.
+ * If any of the promises are rejected, it returns a promise that is immediately rejected with the reason of
+ * the first promise that was rejected.
  *
  * @param {Array<Promise<number>>} promises
  * @return {Promise<Array<number>> }
@@ -102,8 +105,8 @@ function getFirstPromiseResult(/* promises */) {
  * [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)] => Promise fulfilled with [1, 2, 3]
  * [Promise.resolve(1), Promise.reject(2), Promise.resolve(3)] => Promise rejected with 2
  */
-function getAllOrNothing(/* promises */) {
-  throw new Error('Not implemented');
+function getAllOrNothing(promises) {
+  return Promise.all(promises);
 }
 
 /**
